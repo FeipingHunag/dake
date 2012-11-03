@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgis
+  encoding: unicode
+  pool: 5
+  username: date
+  password:
+  schema_search_path: public,topology
+  postgis_extension: postgis,postgis_topology
+
+development:
+  <<: *default
+  database: dake_development
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+  database: dake_production
+
