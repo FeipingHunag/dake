@@ -68,5 +68,4 @@ class User < ActiveRecord::Base
   def generate_profile
     self.build_profile(dob: Time.now) if self.profile.nil?
   end
->>>>>>> 4ca6c2b
 end
