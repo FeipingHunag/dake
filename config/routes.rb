@@ -1,5 +1,12 @@
 Dake::Application.routes.draw do
   devise_for :users
+  resources :users, only: [:show] do
+    member do
+      get :followers, :following
+      put :follow, :unfollow
+    end
+    put  :update_profile, :update_password, on: :collection
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
