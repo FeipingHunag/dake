@@ -11,4 +11,3 @@ User.create [{nickname: 'fph',email:'huang900107@163.com', password: '900107'},
             ]
 user = User.first
 group = user.groups.create! name: 'dake boys', description: 'so many boys...'
-message = user.messages.create! content: 'hellow boys'

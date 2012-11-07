@@ -3,7 +3,9 @@ class CreateMessages < ActiveRecord::Migration
     create_table :messages ,id: false do |t|
       t.integer :id, limit: 8,  null: false
       t.integer :user_id, limit: 8,  null: false
-      t.integer :message_type, default: 0
+      t.integer :mtype, default: 0
+      t.references :received_messageable, polymorphic: true, limit: 8
+      t.boolean :opened, :default => false
       t.text :content
 
       t.timestamps
@@ -14,7 +16,7 @@ class CreateMessages < ActiveRecord::Migration
       ALTER TABLE messages ALTER id SET DEFAULT next_id();
     SQL
 
-    add_index :messages, :message_type
+    add_index :messages, :received_messageable_id
     add_index :messages, :user_id
   end
 end

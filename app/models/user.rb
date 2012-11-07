@@ -22,9 +22,7 @@ class User < ActiveRecord::Base
       Membership.with_scope(:create => {role: 'owner'}) {super}
     end
   end
-
-  has_many :messages
-  has_many :message_recipients, as: :message_recipientable
+  has_many :received_messages_relation, as: :received_messageable
 
   before_create :generate_profile
 
@@ -62,6 +60,17 @@ class User < ActiveRecord::Base
 
   def leave_group!(group)
     memberships.find_by_group_id(group).destroy
+  end
+
+  def send_message_to(to, message_attributes)
+    Message.create(message_attributes) do |m|
+      m.received_messageable = to
+      m.user = self
+    end
+  end
+
+  def conversation_with(user)
+    Message.connected_with user
   end
 
   protected
