@@ -8,6 +8,10 @@ Dake::Application.routes.draw do
     put  :update_profile, :update_password, on: :collection
   end
 
+  resources :messages, only: [:create,:destroy] do
+    put :read, on: :member
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     unless current_user.following? @user
       rc = 1 if current_user.follow! @user
     end 
-    render json: rc: rc
+    render json: {rc: rc}
   end
 
   def unfollow
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if current_user.following? @user
       rc = 1 if current_user.unfollow! @user
     end 
-    render json: rc: rc
+    render json: {rc: rc}
   end
 
   def update_profile
@@ -43,6 +43,10 @@ class UsersController < ApplicationController
       sign_in :user, current_user, :bypass => true
     else
     end
+  end
+
+  def conversation
+    @messages = current_user.conversation_with @user
   end
 
   protected
