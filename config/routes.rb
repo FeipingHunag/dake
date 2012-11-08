@@ -5,12 +5,19 @@ Dake::Application.routes.draw do
       get :followers, :following
       put :follow, :unfollow
     end
-    put  :update_profile, :update_password, on: :collection
+    collection do 
+      put  :update_profile
+      put  :update_password
+      put  :update_avatar
+    end
   end
 
   resources :messages, only: [:create,:destroy] do
     put :read, on: :member
   end
+
+  resources :conversations, only: [:index, :show]
+  resources :photos, only: [:create, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -45,8 +45,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def conversation
-    @messages = current_user.conversation_with @user
+  def update_avatar
+    @user = current_user
+    if @user.update_without_password(params[:user])
+    else
+    end
   end
 
   protected

@@ -5,8 +5,10 @@ class User < ActiveRecord::Base
            :recoverable, :rememberable, :trackable, :validatable,
            :lockable,:token_authenticatable
 
-  has_one  :profile, :dependent => :destroy
+  has_one  :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
+
+  mount_uploader :avatar, AvatarUploader
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -16,13 +18,14 @@ class User < ActiveRecord::Base
                                    dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
 
-  has_many :memberships, :dependent => :destroy
+  has_many :memberships, dependent: :destroy
   has_many :groups, :through => :memberships, source: :group do
     def create *params, &block
       Membership.with_scope(:create => {role: 'owner'}) {super}
     end
   end
   has_many :received_messages_relation, as: :received_messageable
+  has_many :photos, dependent: :destroy
 
   before_create :generate_profile
 
@@ -67,10 +70,6 @@ class User < ActiveRecord::Base
       m.received_messageable = to
       m.user = self
     end
-  end
-
-  def conversation_with(user)
-    Message.connected_with self, user
   end
 
 # Mark message as deleted

@@ -37,7 +37,7 @@ class Message < ActiveRecord::Base
       else 
         raise "unknow message_type #{message_type}"
     end
-    uploader = uploaderClass.new 
+    uploader = uploaderClass.new
     uploader.store!(self.content)
     self.content = uploader.url
   end
