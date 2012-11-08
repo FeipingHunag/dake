@@ -11,3 +11,10 @@ User.create [{nickname: 'fph',email:'huang900107@163.com', password: '900107'},
             ]
 user = User.first
 group = user.groups.create! name: 'dake boys', description: 'so many boys...'
+
+u1 = User.first
+u2 = User.last
+
+content = "http://dake-photos.b0.upaiyun.com/uploads/4a4bd685-b371-43fb-9097-b792dc1bb25c.png"
+
+u1.send_message_to u2, content: content, mtype: 1

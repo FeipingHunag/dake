@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   before_filter :get_message, except: [:create]
 
-  # @param [(group_id | user_id), message: [content, type] ]
+  # @param [(group_id | user_id), message: [content, mtype] ]
   def create
     to = Group.find(params[:group_id]) if params[:group_id]
     to = User.find(params[:user_id]) if params[:user_id]
@@ -14,7 +14,8 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    
+    current_user.delete_message @message
+    render nothing: true
   end
 
   private
@@ -23,6 +24,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:content, :type)
+    params.require(:message).permit(:content, :mtype)
   end
 end

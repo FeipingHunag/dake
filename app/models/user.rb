@@ -70,7 +70,23 @@ class User < ActiveRecord::Base
   end
 
   def conversation_with(user)
-    Message.connected_with user
+    Message.connected_with self, user
+  end
+
+# Mark message as deleted
+  def delete_message(message)
+    current_user = self
+
+    case current_user
+      when message.to
+        attribute =  :recipient_delete
+      when message.from
+        attribute = :sender_delete
+      else
+        raise "#{current_user} can't delete this message"
+    end
+
+    message.update_attributes!(attribute => true)
   end
 
   protected
