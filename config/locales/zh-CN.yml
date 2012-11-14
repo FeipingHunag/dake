@@ -2,4 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 zh-CN:
-  hello: "Hello world"
+  dake:
+    api:
+      invalid_resource: "出错了。请检查以下错误。"
+      resource_not_found: "资源没有找到。"
+      standard_error: "服务器出错。"

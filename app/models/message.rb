@@ -2,7 +2,7 @@ class Message < ActiveRecord::Base
   #mtype 0:text, 1:photo, 2:audio
   MESSAGE_TYPE = {text: 0, photo: 1, audio: 2}
   belongs_to :user
-  belongs_to :received_messageable, :polymorphic => true
+  belongs_to :received_messageable, polymorphic: true
 
   default_scope order("created_at desc")
 

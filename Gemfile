@@ -4,8 +4,11 @@ gem 'rails', '3.2.8'
 gem 'strong_parameters'
 
 gem 'squeel'
-gem 'jbuilder'
 gem 'kaminari'
+# =============== api ====================
+gem 'rabl'
+gem 'yajl-ruby', :require => "yajl"
+# ============ PostgreSQL ================
 
 # ============ PostgreSQL ================
 gem 'pg'

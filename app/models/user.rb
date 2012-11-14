@@ -19,9 +19,9 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower
 
   has_many :memberships, dependent: :destroy
-  has_many :groups, :through => :memberships, source: :group do
+  has_many :groups, through: :memberships, source: :group do
     def create *params, &block
-      Membership.with_scope(:create => {role: 'owner'}) {super}
+      Membership.with_scope(create: {role: 'owner'}) {super}
     end
   end
   has_many :received_messages_relation, as: :received_messageable
@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
   end
 
   def join_group!(group)
-    memberships.create!(:group_id => group.id)
+    memberships.create!(group_id: group.id)
   end
 
   def leave_group!(group)
