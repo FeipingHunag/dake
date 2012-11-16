@@ -55,6 +55,8 @@ GEM
       warden (~> 1.2.1)
     devise-async (0.3.1)
       devise (>= 1.1)
+    enumerate_it (1.0.1)
+      activesupport (>= 3.0.0)
     erubis (2.7.0)
     funtimes (0.4.0)
     highline (1.6.15)
@@ -173,6 +175,7 @@ DEPENDENCIES
   carrierwave-upyun
   devise
   devise-async
+  enumerate_it (= 1.0.1)
   kaminari
   pg
   pry

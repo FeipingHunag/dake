@@ -35,6 +35,7 @@ gem 'carrierwave-upyun'
 gem 'unicorn'
 gem 'capistrano'
 # ========================================
+gem 'enumerate_it', '1.0.1'
 
 group :development do
  gem 'pry'
