@@ -1,10 +1,10 @@
 class Message < ActiveRecord::Base
   belongs_to :user
   belongs_to :received_messageable, polymorphic: true
-  has_enumeration_for :mtype, :with => MessageType,
-                              :create_scopes => true,
-                              :create_helpers => true,
-                              :required => true
+  has_enumeration_for :mtype, with: MessageType,
+                              create_scopes: true,
+                              create_helpers: true,
+                              required: true
 
   default_scope order("created_at desc")
 
@@ -30,8 +30,7 @@ class Message < ActiveRecord::Base
   private
   def process_content
     return if self.text?
-    uploaderClass =  self.photo? ? PhotoUploader : AudioUploader
-    uploader = uploaderClass.new
+    uploader = "#{self.mtype_humanize}Uploader".constantize.new
     uploader.store!(self.content)
     self.content = uploader.url
   end
