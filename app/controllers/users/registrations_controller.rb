@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::SessionsController
   end
 
   def resource_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, profile_attributes: [:plate_number])
   end
   private :resource_params
 end

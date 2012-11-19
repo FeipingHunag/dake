@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
            :recoverable, :rememberable, :trackable, :validatable,
            :lockable,:token_authenticatable
 
+  before_create :ensure_authentication_token
+  
   has_one  :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
@@ -78,7 +80,7 @@ class User < ActiveRecord::Base
 
     case current_user
       when message.to
-        attribute =  :recipient_delete
+        attribute = :recipient_delete
       when message.from
         attribute = :sender_delete
       else
