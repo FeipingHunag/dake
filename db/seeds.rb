@@ -17,4 +17,4 @@ u2 = User.last
 
 content = "http://dake-photos.b0.upaiyun.com/uploads/4a4bd685-b371-43fb-9097-b792dc1bb25c.png"
 
-u1.send_message_to u2, content: content, mtype: 1
+# u1.send_message_to u2, content: content, mtype: 1
