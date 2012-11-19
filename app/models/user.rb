@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
-  
+
   devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable,
            :lockable,:token_authenticatable
@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
 
   def follow!(other_user)
     relationships.create!(followed_id: other_user.id)
-  end 
+  end
 
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.followed_id).destroy
