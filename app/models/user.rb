@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
+  # include ActiveModel::ForbiddenAttributesProtection
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, foreign_key: "followed_id",
                                     class_name: "Relationship",
                                      dependent: :destroy
+  
   has_many :followers, through: :reverse_relationships, source: :follower
   
   has_many :memberships, dependent: :destroy
