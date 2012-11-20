@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
   end
   
   def nearby
-    coordinate = RGeo::Geos.factory.point(params[:longitude], params[:latitude])
+    coordinate = RGeo::Geos.factory.point(params[:longitude].to_f, params[:latitude].to_f)
     current_user.locations.create(:coordinate => coordinate)
     @users = current_user.nearby(params[:longitude], params[:latitude])
     respond_with @users
