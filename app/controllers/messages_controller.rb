@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   def create
     to = Group.find(params[:group_id]) if params[:group_id]
     to = User.find(params[:user_id]) if params[:user_id]
-    @message = current_user.send_message(to, message_params)
+    @message = current_user.send_message_to(to, message_params)
   end
 
   def read
