@@ -1,7 +1,7 @@
 Dake::Application.routes.draw do
 
   devise_for :users, controllers: {registrations: "users/registrations", passwords: "users/passwords"}
-  get 'bootsrap_data' => "home#index"
+  get 'bootstrap_data' => "home#index"
   resources :users, only: [:show] do
     member do
       get :followers, :following

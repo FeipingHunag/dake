@@ -6,11 +6,11 @@ class UsersController < ApplicationController
   end
 
   def following
-    @user.followed_users
+    @following = @user.followed_users
   end
 
   def followers
-    @user.followers
+    @followers = @user.followers
   end
 
   def follow
