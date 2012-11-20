@@ -1,3 +1,1 @@
-object @user
-
-attributes :id, :name
+attributes :id, :nickname, :bio
