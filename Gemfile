@@ -44,5 +44,6 @@ group :development do
  gem 'awesome_print'
  gem 'pry-doc'
  gem 'quiet_assets'
+ gem "bullet" #fix N+1
 end
 

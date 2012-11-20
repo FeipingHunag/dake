@@ -35,6 +35,8 @@ GEM
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
+    bullet (4.2.0)
+      uniform_notifier
     capistrano (2.13.5)
       highline
       net-scp (>= 1.0.0)
@@ -159,6 +161,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.1.0)
     warden (1.2.1)
       rack (>= 1.0)
     yajl-ruby (1.1.0)
@@ -173,6 +176,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgis-adapter
   awesome_print
+  bullet
   capistrano
   carrierwave-upyun
   devise

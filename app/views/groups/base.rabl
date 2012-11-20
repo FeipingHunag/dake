@@ -1,1 +1,1 @@
-attributes :id, :topic, :description
+attributes :id, :name, :description

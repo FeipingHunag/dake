@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   has_one  :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
-
+  delegate :name, :bio, :gender, :dob, :age, :zodiac_sign, to: :profile
   mount_uploader :avatar, AvatarUploader
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
