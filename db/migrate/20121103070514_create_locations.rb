@@ -6,7 +6,7 @@ class CreateLocations < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :locations , :user_id,   unique: true
+    add_index :locations , :user_id
     add_index :locations, :coordinate, :spatial => true
   end
 end
