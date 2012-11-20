@@ -1,3 +1,5 @@
 class Location < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
+  
+  belongs_to :user
+  attr_accessible :coordinate, :user_id
 end

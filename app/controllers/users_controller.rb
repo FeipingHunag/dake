@@ -6,18 +6,18 @@ class UsersController < ApplicationController
   end
 
   def following
-    @user.followered_users
+    @following = @user.followed_users
   end
 
   def followers
-    @user.followers
+    @followers = @user.followers
   end
 
   def follow
     rc = 0
     unless current_user.following? @user
       rc = 1 if current_user.follow! @user
-    end 
+    end
     render json: {rc: rc}
   end
 
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     rc = 0
     if current_user.following? @user
       rc = 1 if current_user.unfollow! @user
-    end 
+    end
     render json: {rc: rc}
   end
 

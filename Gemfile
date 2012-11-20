@@ -7,6 +7,7 @@ gem 'squeel'
 gem 'kaminari'
 # =============== api ====================
 gem 'rabl'
+gem 'jbuilder', '0.8.2'
 gem 'yajl-ruby', :require => "yajl"
 # ============ PostgreSQL ================
 
@@ -43,5 +44,6 @@ group :development do
  gem 'awesome_print'
  gem 'pry-doc'
  gem 'quiet_assets'
+ gem "bullet" #fix N+1
 end
 
