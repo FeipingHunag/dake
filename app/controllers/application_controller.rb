@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   skip_before_filter :verify_authenticity_token, if: Proc.new { |c| c.request.format == 'application/json' }
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-  rescue_from StandardError, with: :standard_error
+  # rescue_from StandardError, with: :standard_error
 
   private
   def not_found

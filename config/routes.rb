@@ -1,5 +1,9 @@
 Dake::Application.routes.draw do
-
+  resources :locations, only: [:create] do
+    collection do
+      get :nearby
+    end
+  end
   devise_for :users, controllers: {registrations: "users/registrations", passwords: "users/passwords"}
   get 'bootstrap_data' => "home#index"
   resources :users, only: [:show] do

@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
-  respond_to :json, :html
+  respond_to :json
+  
   def create
     coordinate = RGeo::Geos.factory.point(params[:longitude], params[:latitude])
     current_user.locations.create(:coordinate => coordinate)
