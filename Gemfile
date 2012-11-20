@@ -38,6 +38,8 @@ gem 'capistrano'
 # ========================================
 gem 'enumerate_it', '1.0.1'
 
+gem 'bindata'
+
 group :development do
  gem 'pry'
  gem "pry-nav"
