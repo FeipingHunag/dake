@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_filter :get_user, except: [:update_profile]
 
   def show
-    @user
   end
 
   def following
@@ -32,7 +31,8 @@ class UsersController < ApplicationController
   def update_profile
     @user = current_user
     if @user.update_without_password(params[:user])
-      sign_in :user, current_user, :bypass => true
+      sign_in :user, current_user, bypass: true
+      render :show, status: 200
     else
       invalid_resource! @user
     end
@@ -41,7 +41,8 @@ class UsersController < ApplicationController
   def update_password
     @user = current_user
     if @user.update_with_password(params[:user])
-      sign_in :user, current_user, :bypass => true
+      sign_in :user, current_user, bypass: true
+      head status: 200
     else
       invalid_resource! @user
     end
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
   def update_avatar
     @user = current_user
     if @user.update_without_password(params[:user])
+
     else
       invalid_resource! @user
     end

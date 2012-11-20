@@ -5,7 +5,11 @@ class MessagesController < ApplicationController
   def create
     to = Group.find(params[:group_id]) if params[:group_id]
     to = User.find(params[:user_id]) if params[:user_id]
-    @message = current_user.send_message_to(to, message_params)
+    if @message = current_user.send_message_to(to, message_params)
+      render :show, status: 201
+    else
+      invalid_resource! @message
+    end
   end
 
   def read
@@ -15,7 +19,7 @@ class MessagesController < ApplicationController
 
   def destroy
     current_user.delete_message @message
-    render nothing: true
+    head status: 204
   end
 
   private

@@ -94,11 +94,11 @@ class User < ActiveRecord::Base
 
     message.update_attributes!(attribute => true)
   end
-  
+
   def nearby(longitude, latitude)
-    users = User.select("users.*, t.distance").joins("right join (select ul1.*, st_distance(st_point(#{longitude}, #{latitude}), ul1.coordinate) distance from uniq_locations ul1 where not exists 
-    (select 1 from uniq_locations ul2 
-    where ul1.user_id = ul2.user_id 
+    users = User.select("users.*, t.distance").joins("right join (select ul1.*, st_distance(st_point(#{longitude}, #{latitude}), ul1.coordinate) distance from uniq_locations ul1 where not exists
+    (select 1 from uniq_locations ul2
+    where ul1.user_id = ul2.user_id
     and st_distance(st_point(#{longitude}, #{latitude}), ul2.coordinate) < st_distance(st_point(#{longitude}, #{latitude}), ul1.coordinate))) t on t.user_id = users.id")
   end
 

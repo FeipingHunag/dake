@@ -22,6 +22,13 @@ Dake::Application.routes.draw do
     put :read, on: :member
   end
 
+  resources :groups, only: [:show, :create] do
+    member do
+      put     :join
+      delete  :leave
+    end
+  end
+
   resources :conversations, only: [:index, :show]
   resources :photos, only: [:create, :destroy]
 end
