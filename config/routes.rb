@@ -1,6 +1,6 @@
 Dake::Application.routes.draw do
-  devise_for :users
-  
+  devise_for :users, controllers: {registrations: "users/registrations", passwords: "users/passwords"}
+
   resources :users, only: [:show] do
     member do
       get :followers, :following
@@ -12,11 +12,11 @@ Dake::Application.routes.draw do
       put  :update_avatar
     end
   end
-  
+
   resources :messages, only: [:create,:destroy] do
     put :read, on: :member
   end
-  
+
   resources :conversations, only: [:index, :show]
   resources :photos, only: [:create, :destroy]
 end

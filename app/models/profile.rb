@@ -1,12 +1,12 @@
 class Profile < ActiveRecord::Base
-  # include ActiveModel::ForbiddenAttributesProtection
-  
+  include ActiveModel::ForbiddenAttributesProtection
+
   belongs_to :user
-  
+
   zodiac_reader :dob
-  
+
   before_save :calc_age, :if => Proc.new {|profile| profile.dob_changed?}
-  
+
   private
     def calc_age
       now = Time.now.utc.to_date
