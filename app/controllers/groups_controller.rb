@@ -1,6 +1,10 @@
 class GroupsController < ApplicationController
   before_filter :get_group, except: [:create]
 
+  def index
+    @groups = current_user.groups
+  end
+
   def create
     if @group = current_user.groups.create(group_params)
       render :show, status: 201

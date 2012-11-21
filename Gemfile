@@ -7,6 +7,7 @@ gem 'squeel'
 gem 'kaminari'
 # =============== api ====================
 gem 'rabl'
+gem 'jbuilder', '0.8.2'
 gem 'yajl-ruby', :require => "yajl"
 # ============ PostgreSQL ================
 

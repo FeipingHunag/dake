@@ -22,7 +22,7 @@ Dake::Application.routes.draw do
     put :read, on: :member
   end
 
-  resources :groups, only: [:show, :create] do
+  resources :groups, only: [:index, :show, :create] do
     member do
       put     :join
       delete  :leave
