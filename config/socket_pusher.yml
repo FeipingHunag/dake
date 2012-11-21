@@ -1,7 +1,7 @@
 development:
   host: 192.168.1.108
   port: 8080
-# staging    
+# staging
 test:
   host: 127.0.0.1
   port: 8080

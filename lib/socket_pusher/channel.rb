@@ -15,7 +15,7 @@ module SocketPusher
         'data_type' => 'trigger_channel',
         'cname'     => name,
         'ename'     => event_name,
-        'user_info' => (data.is_a?(Hash) ? data : MultiJson.load(data) )
+        'user_info' => (data.is_a?(Hash) ? data : data.to_json )
       }
       pd = PushData.new :content => res.to_json
       @client.post pd.to_binary_s
