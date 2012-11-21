@@ -26,6 +26,7 @@ Dake::Application.routes.draw do
     member do
       put     :join
       delete  :leave
+      get     :messages
     end
   end
 

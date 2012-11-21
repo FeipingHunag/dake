@@ -17,6 +17,10 @@ class GroupsController < ApplicationController
 
   end
 
+  def messages
+    @messages = @group.messages
+  end
+
   def join
     current_user.join_group! @groups
     head status: 200
