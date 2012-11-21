@@ -27,6 +27,11 @@ gem 'devise'
 gem 'devise-async'
 # ========================================
 
+# ============= json decode ==============
+gem 'multi_json'
+gem 'oj'
+# ========================================
+
 # ============= Carrierwave ==============
 gem 'rest-client'
 gem 'carrierwave-upyun'
@@ -37,6 +42,8 @@ gem 'unicorn'
 gem 'capistrano'
 # ========================================
 gem 'enumerate_it', '1.0.1'
+
+gem 'bindata'
 
 group :development do
  gem 'pry'
