@@ -14,7 +14,6 @@ module SocketPusher
       @host, @port = options.values_at(
         :host, :port
       )
-      establish_connection
     end
 
 
@@ -42,6 +41,7 @@ module SocketPusher
 
     def write
       begin
+        establish_connection
         yield @socket
       rescue IOError, Errno::EPIPE
         establish_connection
