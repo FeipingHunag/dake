@@ -27,6 +27,11 @@ gem 'devise'
 gem 'devise-async'
 # ========================================
 
+# ============= json decode ==============
+gem 'multi_json'
+gem 'oj'
+# ========================================
+
 # ============= Carrierwave ==============
 gem 'rest-client'
 gem 'carrierwave-upyun'
