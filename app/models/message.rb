@@ -70,6 +70,6 @@ class Message < ActiveRecord::Base
   end
 
   def push_message(received_id)
-    SocketPusher[received_id].trigger('msg_created', self.serializable_hash)
+    SocketPusher[received_id.to_s].trigger('msg_created', self.serializable_hash)
   end
 end
