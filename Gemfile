@@ -34,7 +34,7 @@ gem 'oj'
 
 # ============= Carrierwave ==============
 gem 'rest-client'
-gem 'carrierwave-upyun'
+gem 'carrierwave-upyun', :git => "git://github.com/vvdpzz/carrierwave-upyun.git"
 # ========================================
 
 # ================ Deploy ================
