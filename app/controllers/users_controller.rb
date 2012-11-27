@@ -5,11 +5,13 @@ class UsersController < ApplicationController
   end
 
   def following
-    @following = @user.followed_users
+    @users = @user.followed_users
+    render 'follow'
   end
 
   def followers
-    @followers = @user.followers
+    @users = @user.followers
+    render 'follow'
   end
 
   def follow
