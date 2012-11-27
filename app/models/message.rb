@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, include: [:profile]
   belongs_to :received_messageable, polymorphic: true
   has_enumeration_for :mtype, with: MessageType,
                               create_scopes: true,
