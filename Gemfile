@@ -37,6 +37,10 @@ gem 'rest-client'
 gem 'carrierwave-upyun', :git => "git://github.com/vvdpzz/carrierwave-upyun.git"
 # ========================================
 
+# ============= Search ===================
+gem 'thinking-sphinx', :git => 'git://github.com/WindStill/thinking-sphinx.git'
+# ========================================
+
 # ================ Deploy ================
 gem 'unicorn'
 gem 'capistrano'

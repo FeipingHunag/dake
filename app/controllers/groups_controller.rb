@@ -30,6 +30,13 @@ class GroupsController < ApplicationController
     current_user.leave_group! @groups
     head status: 204
   end
+  
+  def search
+    params[:q] = params[:q].gsub(/[^\u4E00-\u9FA5\w\s]/,'')
+    if params[:q].present?
+      @groups = Group.search(params[:q],:sort_mode => :extended,:order => "@weight DESC", :page => 1, :per_page => 20)
+    end
+  end
 
   protected
   def get_group
