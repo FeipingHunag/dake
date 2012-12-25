@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/cassiomarques/enumerate_it.git
+  revision: 9e32172a9dc12ed949b40cd0a9898bd32b715a98
+  specs:
+    enumerate_it (1.0.1)
+      activesupport (>= 3.0.0)
+
+GIT
   remote: git://github.com/vvdpzz/carrierwave-upyun.git
   revision: 48448909c7eaf4ee21577be438bc7a22de2adcc1
   specs:
@@ -63,8 +70,6 @@ GEM
       warden (~> 1.2.1)
     devise-async (0.3.1)
       devise (>= 1.1)
-    enumerate_it (1.0.1)
-      activesupport (>= 3.0.0)
     erubis (2.7.0)
     funtimes (0.4.0)
     highline (1.6.15)
@@ -189,7 +194,7 @@ DEPENDENCIES
   carrierwave-upyun!
   devise
   devise-async
-  enumerate_it (= 1.0.1)
+  enumerate_it!
   jbuilder (= 0.8.2)
   kaminari
   multi_json

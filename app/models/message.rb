@@ -70,6 +70,7 @@ class Message < ActiveRecord::Base
   end
 
   def push_message(received_id)
-    SocketPusher[received_id].trigger('msg_created', self.serializable_hash)
+    @message_hash ||= Rabl::Renderer.new('messages/show',self, :format => 'hash').render
+    SocketPusher[received_id.to_s].trigger('msg_created', @message_hash)
   end
 end
