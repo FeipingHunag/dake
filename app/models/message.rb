@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, include: [:profile]
   belongs_to :received_messageable, polymorphic: true
   has_enumeration_for :mtype, with: MessageType,
                               create_scopes: true,
@@ -38,6 +38,10 @@ class Message < ActiveRecord::Base
     self.received_messageable_type == 'User'
   end
 
+  def rabl_hash
+    @messageHash ||= Rabl::Renderer.new('messages/show', self, :format => 'hash').render
+  end
+
   private
   def process_content
     return if self.text?
@@ -70,6 +74,6 @@ class Message < ActiveRecord::Base
   end
 
   def push_message(received_id)
-    SocketPusher[received_id.to_s].trigger('msg_created', self.serializable_hash)
+    SocketPusher[received_id].trigger('msg_created', self.rabl_hash)
   end
 end

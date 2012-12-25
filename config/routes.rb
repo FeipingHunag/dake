@@ -28,6 +28,9 @@ Dake::Application.routes.draw do
       delete  :leave
       get     :messages
     end
+    collection do
+      get     :search
+    end
   end
 
   resources :conversations, only: [:index, :show]
