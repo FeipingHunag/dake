@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :get_user, except: [:update_profile]
+  before_filter :get_user, except: [:update_profile, :search]
 
   def show
   end
@@ -56,6 +56,14 @@ class UsersController < ApplicationController
 
     else
       invalid_resource! @user
+    end
+  end
+  
+  def search
+    params[:q] = params[:q].gsub(/[^\u4E00-\u9FA5\w\s]/,'')
+    if params[:q].present?
+      @users = User.search(params[:q],:sort_mode => :extended,:order => "@weight DESC", :page => 1, :per_page => 20)
+      render "search.rabl"
     end
   end
 

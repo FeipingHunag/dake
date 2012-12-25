@@ -35,6 +35,12 @@ class User < ActiveRecord::Base
   has_many :locations, dependent: :destroy
 
   before_create :generate_profile
+  
+  define_index do
+    indexes plate_number, :sortable => true
+
+    set_property :delta => true
+  end
 
   def serializable_hash options = nil
     options ||= {}

@@ -15,6 +15,7 @@ Dake::Application.routes.draw do
       put  :update_profile
       put  :update_password
       put  :update_avatar
+      get  :search
     end
   end
 
