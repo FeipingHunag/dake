@@ -5,7 +5,7 @@ class ConversationsController < ApplicationController
 
   def show
     @friend = User.find params[:id]
-    @messages = Message.includes(:user).connected_with(current_user, friend)
+    @messages = Message.includes(:user).connected_with(current_user, @friend)
 
     Conversation.connected_with(current_user.id, @friend.id).update_all(unread_count: 0)
   end

@@ -6,7 +6,7 @@ class Message < ActiveRecord::Base
                               create_helpers: true,
                               required: true
 
-  default_scope order("created_at desc")
+  # default_scope order("created_at desc")
 
   scope :connected_with, ->(u1, u2) {
     where{((user_id == u1.id) & (received_messageable_type == 'User') &
@@ -30,7 +30,7 @@ class Message < ActiveRecord::Base
     Conversation.connected_with(self.user_id, self.received_messageable_id).decrement!(:unread_count)
   end
 
-  def timestap
+  def timestamp
     self.created_at.to_i
   end
 
@@ -65,7 +65,7 @@ class Message < ActiveRecord::Base
     if user_received?
       push_message(to.id)
     else
-      (to.member_ids - self.user_id).each{|user| push_message(user.id)}
+      (to.member_ids - [self.user_id]).each{|user| push_message(user.to_s)}
     end
   end
 
