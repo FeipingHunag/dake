@@ -1,15 +1,17 @@
 class UsersController < ApplicationController
-  before_filter :get_user, except: [:update_profile]
+  before_filter :get_user, except: [:update_profile, :search]
 
   def show
   end
 
   def following
-    @following = @user.followed_users
+    @users = @user.followed_users
+    render 'follow'
   end
 
   def followers
-    @followers = @user.followers
+    @users = @user.followers
+    render 'follow'
   end
 
   def follow
@@ -54,6 +56,14 @@ class UsersController < ApplicationController
 
     else
       invalid_resource! @user
+    end
+  end
+  
+  def search
+    params[:q] = params[:q].gsub(/[^\u4E00-\u9FA5\w\s]/,'')
+    if params[:q].present?
+      @users = User.search(params[:q],:sort_mode => :extended,:order => "@weight DESC", :page => 1, :per_page => 20)
+      render "search.rabl"
     end
   end
 

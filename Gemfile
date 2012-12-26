@@ -18,7 +18,7 @@ gem 'rgeo'
 gem 'rgeo-activerecord'
 # ========================================
 
-# ================ 星座 ==================
+# ================ 星座 ====================
 gem 'zodiac'
 # ========================================
 
@@ -35,6 +35,10 @@ gem 'oj'
 # ============= Carrierwave ==============
 gem 'rest-client'
 gem 'carrierwave-upyun', git: "git://github.com/vvdpzz/carrierwave-upyun.git"
+# ========================================
+
+# ============= Search ===================
+gem 'thinking-sphinx', :git => 'git://github.com/WindStill/thinking-sphinx.git'
 # ========================================
 
 # ================ Deploy ================

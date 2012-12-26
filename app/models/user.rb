@@ -36,6 +36,12 @@ class User < ActiveRecord::Base
 
   before_create :generate_profile
 
+  define_index do
+    indexes plate_number, :sortable => true
+
+    set_property :delta => true
+  end
+
   def serializable_hash options = nil
     options ||= {}
     super(options.merge(force_except: Devise::Models::Authenticatable::BLACKLIST_FOR_SERIALIZATION.delete_if{|x| x == :authentication_token}))
@@ -58,11 +64,11 @@ class User < ActiveRecord::Base
   end
 
   def followers_count
-    @followers_count ||= self.follower_relationships.count
+    @followers_count ||= self.reverse_relationships.count
   end
 
   def followed_users_count
-    @followed_users_count ||= self.reverse_relationships.count
+    @followed_users_count ||= self.relationships.count
   end
 
   def member?(group)
@@ -75,6 +81,10 @@ class User < ActiveRecord::Base
 
   def leave_group!(group)
     memberships.find_by_group_id(group).destroy
+  end
+
+  def groups_count
+    @groups_count ||= self.memberships.count
   end
 
   def send_message_to(to, message_attributes)

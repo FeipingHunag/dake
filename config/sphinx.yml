@@ -1,0 +1,34 @@
+defaults: &defaults
+  min_word_len: 1
+  searchd_binary_name: searchd
+  indexer_binary_name: indexer
+  charset_type: zh_cn.utf-8
+  mem_limit: 128M
+  morphology: none
+  
+development:
+  <<: *defaults
+  address: 192.168.2.113
+  bin_path: '/usr/local/coreseek/bin'
+  charset_dictpath: '/usr/local/mmseg3/etc/'
+  
+test:
+  <<: *defaults
+  port: 9313
+  bin_path: '/opt/coreseek/bin'
+  charset_dictpath: '/opt/mmseg/etc/'
+  pid_file: '/prod/dev/sparrow/current/tmp/pids/searchd.production.pid'
+  log: '/prod/dev/sparrow/current/log/searchd.log'
+  query_log: '/prod/dev/sparrow/current/log/searchd.query.log'
+  searchd_file_path: '/prod/dev/sparrow/shared/sphinx'
+  
+production:
+  <<: *defaults
+  mem_limit: 728M
+  port: 9313
+  bin_path: '/opt/coreseek/bin'
+  charset_dictpath: '/opt/mmseg/etc/'
+  pid_file: '/prod/dev/sparrow/current/tmp/pids/searchd.production.pid'
+  log: '/prod/dev/sparrow/current/log/searchd.log'
+  query_log: '/prod/dev/sparrow/current/log/searchd.query.log'
+  searchd_file_path: '/prod/dev/sparrow/shared/sphinx'
